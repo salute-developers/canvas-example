@@ -1,0 +1,13 @@
+{
+  "viewportWidth": 1280,
+  "viewportHeight": 800,
+  "baseUrl": "http://localhost:3000",
+  "userAgent": "(stargate; SberPortal)",
+  "chromeWebSecurity": false,
+  "video": false,
+  "env": {
+    "coverage": false
+  },
+  "blockHosts": ["*amplitude.com", "*.ingest.sentry.io"],
+  "testFiles": "**/*@portal.spec.ts"
+}

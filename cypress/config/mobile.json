@@ -1,0 +1,12 @@
+{
+  "viewportWidth": 320,
+  "viewportHeight": 480,
+  "baseUrl": "http://localhost:3000",
+  "chromeWebSecurity": false,
+  "video": false,
+  "env": {
+    "coverage": false
+  },
+  "blockHosts": ["*amplitude.com", "*.ingest.sentry.io"],
+  "testFiles": "**/*@mobile.spec.ts"
+}

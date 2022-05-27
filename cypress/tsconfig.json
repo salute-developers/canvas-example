@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "lib": ["esnext", "dom"],
+        "types": ["cypress", "cypress-wait-until"]
+    },
+    "include": ["../../global.d.ts", "**/*.ts"]
+}
