@@ -8,45 +8,16 @@ import {
 } from '@salutejs/client';
 import Router from 'next/router';
 
-import { Assistant } from '../types/todo';
+import { Assistant, OutputActionType } from '../types/todo';
 import { InputActionType } from '../scenario/types';
 import { smartAppDataHandler } from '../state/state';
 
 import { replaceCharacterInUrl } from './character';
 
-// eslint-disable-next-line import/no-mutable-exports
-export let assistantInstance: Assistant | undefined;
-
 export const assistantState: { current: AssistantAppState } = {
     current: {},
 };
 export const getState = () => assistantState.current;
-
-export const initAssistant = () => {
-    if (!process.env.NEXT_PUBLIC_IS_DEVELOPMENT) {
-        assistantInstance = createAssistant({
-            getState,
-        });
-    }
-
-    if (process.env.NEXT_PUBLIC_SMARTAPP_TOKEN && process.env.NEXT_PUBLIC_SMARTAPP_INIT_PHRASE) {
-        assistantInstance = createSmartappDebugger({
-            token: process.env.NEXT_PUBLIC_SMARTAPP_TOKEN,
-            initPhrase: process.env.NEXT_PUBLIC_SMARTAPP_INIT_PHRASE,
-            getState,
-        });
-    }
-
-    return assistantInstance;
-};
-
-interface AssistantSmartAppData {
-    type: 'smart_app_data';
-    // eslint-disable-next-line camelcase
-    smart_app_data: InputActionType;
-    // eslint-disable-next-line camelcase
-    sdk_meta?: SdkMeta;
-}
 
 export const dataHandler = (command: AssistantClientCustomizedCommand<AssistantSmartAppData>) => {
     let navigation: AssistantNavigationCommand['navigation'] | undefined;
@@ -85,6 +56,63 @@ export const dataHandler = (command: AssistantClientCustomizedCommand<AssistantS
         }
     }
 };
+
+export const initAssistant = () => {
+    let assistant: Assistant | undefined;
+
+    if (typeof window === 'undefined') {
+        return;
+    }
+
+    if (!process.env.NEXT_PUBLIC_IS_DEVELOPMENT) {
+        assistant = createAssistant({
+            getState,
+        });
+    }
+
+    if (process.env.NEXT_PUBLIC_SMARTAPP_TOKEN && process.env.NEXT_PUBLIC_SMARTAPP_INIT_PHRASE) {
+        assistant = createSmartappDebugger({
+            token: process.env.NEXT_PUBLIC_SMARTAPP_TOKEN,
+            initPhrase: process.env.NEXT_PUBLIC_SMARTAPP_INIT_PHRASE,
+            getState,
+        });
+    }
+
+    if (assistant === undefined) {
+        return;
+    }
+
+    assistant.on('data', dataHandler);
+
+    assistant.sendActionPromisified = (actionToSend: OutputActionType) => {
+        return new Promise<InputActionType['payload']>((resolve, reject) => {
+            const unsubscribe = assistant!.sendAction<InputActionType>(
+                actionToSend,
+                (action) => {
+                    resolve(action.payload);
+                    unsubscribe();
+                },
+                // todo add type
+                (error: unknown) => {
+                    reject(error);
+                    unsubscribe();
+                },
+            );
+        });
+    };
+
+    return assistant;
+};
+
+export const assistantInstance: Assistant | undefined = initAssistant();
+
+interface AssistantSmartAppData {
+    type: 'smart_app_data';
+    // eslint-disable-next-line camelcase
+    smart_app_data: InputActionType;
+    // eslint-disable-next-line camelcase
+    sdk_meta?: SdkMeta;
+}
 
 export const earlyInit = () => {
     if (typeof window !== 'undefined' && Array.isArray(window.appInitialData)) {
