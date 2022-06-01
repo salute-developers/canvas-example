@@ -18,7 +18,7 @@ type Props = {
 };
 
 export const PageNote = ({ noteFilter, title = '', nextPageUrl }: Props) => {
-    const { data: notes = [], isLoading } = useInitialNotes();
+    const { data: notes = [], isLoading, isIdle } = useInitialNotes();
     const filteredNotes = notes.filter(noteFilter);
     const basePath = useBasePath();
 
@@ -65,7 +65,7 @@ export const PageNote = ({ noteFilter, title = '', nextPageUrl }: Props) => {
                     addNote(note);
                     setNote('');
                 }}
-                notes={isLoading ? undefined : filteredNotes}
+                notes={isLoading || isIdle ? undefined : filteredNotes}
                 onCheckNote={(n) => mutation.mutate(n.title)}
                 inputValue={note}
                 onInputChange={setNote}

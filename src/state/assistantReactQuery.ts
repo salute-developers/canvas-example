@@ -32,10 +32,5 @@ export function useAssistantQuery<OutputAction extends OutputActionType, InputAc
         'queryKey' | 'queryFn'
     > = {},
 ) {
-    const requestEnabled = (options.enabled || options.enabled === undefined) && Boolean(assistantInstance);
-
-    return useQuery(action.type, () => assistantInstance!.sendActionPromisified!(action), {
-        ...options,
-        enabled: requestEnabled,
-    });
+    return useQuery(action.type, () => assistantInstance!.sendActionPromisified!(action), options);
 }

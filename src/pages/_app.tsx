@@ -77,36 +77,6 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         }
     };
 
-    // инициализация ассистента
-    useEffect(() => {
-        const assistant = initAssistant();
-
-        if (assistant === undefined) {
-            return;
-        }
-
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        assistantInstance.on('data', dataHandler);
-
-        assistant.sendActionPromisified = (actionToSend: OutputActionType) => {
-            return new Promise<InputActionType['payload']>((resolve, reject) => {
-                const unsubscribe = assistant.sendAction<InputActionType>(
-                    actionToSend,
-                    (action) => {
-                        resolve(action.payload);
-                        unsubscribe();
-                    },
-                    // todo add type
-                    (error: unknown) => {
-                        reject(error);
-                        unsubscribe();
-                    },
-                );
-            });
-        };
-    }, []);
-
     const CharacterTheme = themes[initialCharacter];
 
     return (
