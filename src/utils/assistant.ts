@@ -14,6 +14,14 @@ import { smartAppDataHandler } from '../state/state';
 
 import { replaceCharacterInUrl } from './character';
 
+interface AssistantSmartAppData {
+    type: 'smart_app_data';
+    // eslint-disable-next-line camelcase
+    smart_app_data: InputActionType;
+    // eslint-disable-next-line camelcase
+    sdk_meta?: SdkMeta;
+}
+
 export const assistantState: { current: AssistantAppState } = {
     current: {},
 };
@@ -105,14 +113,6 @@ export const initAssistant = () => {
 };
 
 export const assistantInstance: Assistant | undefined = initAssistant();
-
-interface AssistantSmartAppData {
-    type: 'smart_app_data';
-    // eslint-disable-next-line camelcase
-    smart_app_data: InputActionType;
-    // eslint-disable-next-line camelcase
-    sdk_meta?: SdkMeta;
-}
 
 export const earlyInit = () => {
     if (typeof window !== 'undefined' && Array.isArray(window.appInitialData)) {

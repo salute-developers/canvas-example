@@ -1,6 +1,7 @@
 {
   "name": "@salutejs/canvas-example",
   "version": "1.0.0",
+  "author": "Salute Frontend Team <salute.developers@gmail.com>",
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
@@ -11,6 +12,7 @@
     "tsc": "tsc",
     "lint:stylelint:fix": "stylelint",
     "lint:stylelint": "stylelint",
+    "release": "git diff && auto shipit",
     "cy:open": "cypress open -b chromium --env failOnSnapshotDiff=false",
     "cy:open:portal": "npm run cy:open -- --config-file cypress/config/portal.json",
     "cy:open:sberbox": "npm run cy:open -- --config-file cypress/config/sberbox.json",
@@ -48,6 +50,7 @@
     "@types/styled-components": "5.1.11",
     "@typescript-eslint/eslint-plugin": "4.33.0",
     "@typescript-eslint/parser": "4.33.0",
+    "auto": "^10.36.5",
     "babel-eslint": "10.1.0",
     "cross-env": "^7.0.3",
     "cypress": "6.4.0",

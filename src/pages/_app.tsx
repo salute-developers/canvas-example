@@ -1,5 +1,4 @@
 import type { AppProps } from 'next/app';
-import { useEffect } from 'react';
 import { createGlobalStyle, StyleSheetManager } from 'styled-components';
 import Head from 'next/head';
 import { Container, DeviceThemeProvider } from '@salutejs/plasma-ui';
@@ -10,10 +9,8 @@ import { QueryClientProvider } from 'react-query';
 import { useCharacter } from '../utils/character';
 import { usePlatform } from '../utils/platform';
 import { queryClient } from '../state/state';
-import { OutputActionType } from '../types/todo';
-import { InputActionType } from '../scenario/types';
 import { GlobalInsets } from '../components/GlobalInsetsVars';
-import { assistantInstance, initAssistant, dataHandler, earlyInit } from '../utils/assistant';
+import { earlyInit } from '../utils/assistant';
 
 const themes = {
     sber: createGlobalStyle(darkSber),
