@@ -1,5 +1,4 @@
 import type { AppProps } from 'next/app';
-import { useEffect } from 'react';
 import { createGlobalStyle, StyleSheetManager } from 'styled-components';
 import Head from 'next/head';
 import { Container, DeviceThemeProvider } from '@salutejs/plasma-ui';
@@ -10,10 +9,8 @@ import { QueryClientProvider } from 'react-query';
 import { useCharacter } from '../utils/character';
 import { usePlatform } from '../utils/platform';
 import { queryClient } from '../state/state';
-import { OutputActionType } from '../types/todo';
-import { InputActionType } from '../scenario/types';
 import { GlobalInsets } from '../components/GlobalInsetsVars';
-import { assistantInstance, initAssistant, dataHandler, earlyInit } from '../utils/assistant';
+import { earlyInit } from '../utils/assistant';
 
 const themes = {
     sber: createGlobalStyle(darkSber),
@@ -76,36 +73,6 @@ function MyApp({ Component, pageProps, router }: AppProps) {
                 return 'sberBox';
         }
     };
-
-    // инициализация ассистента
-    useEffect(() => {
-        const assistant = initAssistant();
-
-        if (assistant === undefined) {
-            return;
-        }
-
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        assistantInstance.on('data', dataHandler);
-
-        assistant.sendActionPromisified = (actionToSend: OutputActionType) => {
-            return new Promise<InputActionType['payload']>((resolve, reject) => {
-                const unsubscribe = assistant.sendAction<InputActionType>(
-                    actionToSend,
-                    (action) => {
-                        resolve(action.payload);
-                        unsubscribe();
-                    },
-                    // todo add type
-                    (error: unknown) => {
-                        reject(error);
-                        unsubscribe();
-                    },
-                );
-            });
-        };
-    }, []);
 
     const CharacterTheme = themes[initialCharacter];
 
