@@ -13,6 +13,7 @@ import { InputActionType } from '../scenario/types';
 import { smartAppDataHandler } from '../state/state';
 
 import { replaceCharacterInUrl } from './character';
+import { isRunInCypress } from './utils';
 
 interface AssistantSmartAppData {
     type: 'smart_app_data';
@@ -66,28 +67,20 @@ export const dataHandler = (command: AssistantClientCustomizedCommand<AssistantS
 };
 
 export const initAssistant = () => {
-    let assistant: Assistant | undefined;
-
     if (typeof window === 'undefined') {
         return;
     }
 
-    if (!process.env.NEXT_PUBLIC_IS_DEVELOPMENT) {
-        assistant = createAssistant({
-            getState,
-        });
-    }
+    let assistant: Assistant = createAssistant({
+        getState,
+    });
 
-    if (process.env.NEXT_PUBLIC_SMARTAPP_TOKEN && process.env.NEXT_PUBLIC_SMARTAPP_INIT_PHRASE) {
+    if (process.env.NEXT_PUBLIC_SMARTAPP_TOKEN && process.env.NEXT_PUBLIC_SMARTAPP_INIT_PHRASE && !isRunInCypress) {
         assistant = createSmartappDebugger({
             token: process.env.NEXT_PUBLIC_SMARTAPP_TOKEN,
             initPhrase: process.env.NEXT_PUBLIC_SMARTAPP_INIT_PHRASE,
             getState,
         });
-    }
-
-    if (assistant === undefined) {
-        return;
     }
 
     assistant.on('data', dataHandler);
