@@ -1,6 +1,14 @@
 import { CharacterId } from '@salutejs/client';
 import { GetStaticPaths } from 'next';
 import Router, { useRouter } from 'next/router';
+import { createGlobalStyle } from 'styled-components';
+import { darkEva, darkJoy, darkSber } from '@salutejs/plasma-tokens/themes';
+
+const themes = {
+    sber: createGlobalStyle(darkSber),
+    eva: createGlobalStyle(darkEva),
+    joy: createGlobalStyle(darkJoy),
+};
 
 export const getCharacterStaticPaths: GetStaticPaths = async () => {
     return {
@@ -29,4 +37,10 @@ export const useCharacter = (): CharacterId => {
 
 export const replaceCharacterInUrl = (character: CharacterId) => {
     return Router.asPath.replace(new RegExp(`/(${knownCharacters.join('|')})(.*)`), `/${character}$2`);
+};
+
+export const useCharacterTheme = () => {
+    const initialCharacter = useCharacter();
+
+    return themes[initialCharacter];
 };

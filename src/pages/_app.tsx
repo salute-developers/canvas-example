@@ -1,66 +1,22 @@
 import type { AppProps } from 'next/app';
-import { createGlobalStyle, StyleSheetManager } from 'styled-components';
+import { StyleSheetManager } from 'styled-components';
 import Head from 'next/head';
 import { Container, DeviceThemeProvider } from '@salutejs/plasma-ui';
-import { darkSber, darkJoy, darkEva } from '@salutejs/plasma-tokens/themes';
-import { text, background, gradient } from '@salutejs/plasma-tokens';
 import { QueryClientProvider } from 'react-query';
 
-import { useCharacter } from '../utils/character';
+import { useCharacterTheme } from '../utils/character';
 import { usePlatform } from '../utils/platform';
 import { queryClient } from '../state/state';
 import { GlobalInsets } from '../components/GlobalInsetsVars';
 import { earlyInit } from '../utils/assistant';
-
-const themes = {
-    sber: createGlobalStyle(darkSber),
-    eva: createGlobalStyle(darkEva),
-    joy: createGlobalStyle(darkJoy),
-};
-
-/* stylelint-disable selector-nested-pattern */
-const ProjectTheme = createGlobalStyle`
-  * {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-    -webkit-tap-highlight-color: transparent; /* i.e. Nexus5/Chrome and Kindle Fire HD 7'' */
-  }
-  html {
-    font-size: 32px;
-    user-select: none;
-  }
-  body {
-    font-family: "SB Sans Text", sans-serif;
-    height: auto;
-    min-height: 100%;
-    padding-top: var(--top-inset);
-    padding-bottom: var(--bottom-inset);
-    padding-left: var(--left-inset);
-    padding-right: var(--right-inset);
-  }
-  body:before {
-    content: "";
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    color: ${text};
-    background: ${gradient};
-    background-color: ${background};
-    background-attachment: fixed;
-    background-size: 100vw 100vh;
-    z-index: -2;
-  }
-`;
-/* stylelint-enable */
+import { ProjectGlobalStyle } from '../components/ProjectGlobalStyle';
 
 // инициализируем наше приложение данными до инициализации ассистента
 earlyInit();
 
 function MyApp({ Component, pageProps, router }: AppProps) {
     const { platform, isSberbox, isPortal } = usePlatform(router);
-    const initialCharacter = useCharacter();
+    const CharacterTheme = useCharacterTheme();
 
     const detectDeviceCallback = () => {
         switch (platform) {
@@ -74,8 +30,6 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         }
     };
 
-    const CharacterTheme = themes[initialCharacter];
-
     return (
         <>
             <Head>
@@ -87,7 +41,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
                 <DeviceThemeProvider detectDeviceCallback={detectDeviceCallback}>
                     <QueryClientProvider client={queryClient}>
                         <CharacterTheme />
-                        <ProjectTheme />
+                        <ProjectGlobalStyle />
                         <GlobalInsets />
                         <Container>
                             <Component {...pageProps} />
