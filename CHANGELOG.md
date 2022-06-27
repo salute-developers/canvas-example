@@ -1,3 +1,15 @@
+# v1.0.2 (Mon Jun 27 2022)
+
+#### 🐛 Bug Fix
+
+- refactoring _app.tsx [#3](https://github.com/salute-developers/canvas-example/pull/3) (vanxellshing24@gmail.com)
+
+#### Authors: 1
+
+- rpg59 (vanxellshing24@gmail.com)
+
+---
+
 # v1.0.1 (Fri Jun 03 2022)
 
 #### 🐛 Bug Fix
