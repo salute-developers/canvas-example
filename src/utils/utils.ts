@@ -1,6 +1,6 @@
 import Router from 'next/router';
 
-import { PlatformType } from '../types';
+import { DeviceFamily } from '../types';
 
 import { useCharacter } from './character';
 import { getPlatformByPath, usePlatform } from './platform';
@@ -26,7 +26,7 @@ export const getBasePathNotInComponent = () => {
 
 export const isServer = typeof window === 'undefined';
 
-export const detectDeviceCallback = (platform: PlatformType) => {
+export const detectDeviceCallback = (platform: DeviceFamily) => {
     return () => {
         if (platform === 'mobile') {
             return 'mobile';
@@ -41,3 +41,17 @@ export const detectDeviceCallback = (platform: PlatformType) => {
 };
 
 export const isRunInCypress = typeof window !== 'undefined' && window.Cypress;
+
+export const waitForRouter = (): Promise<void> =>
+    new Promise((res) => {
+        const recursiveUpdate = () => {
+            if (Router.router) {
+                res();
+
+                return;
+            }
+            setTimeout(recursiveUpdate);
+        };
+
+        recursiveUpdate();
+    });

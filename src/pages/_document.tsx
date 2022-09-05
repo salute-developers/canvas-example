@@ -11,9 +11,9 @@ class ProductionHead extends NextHead {
             1,
             0,
             // используем статику с CDN так как она кешируется и ускоряет последующие загрузки приложения
-            <script src="https://cdn-app.sberdevices.ru/shared-static/0.0.0/js/react/react-17.0.2.min.js" defer />,
+            <script src="https://cdn-app.sberdevices.ru/shared-static/0.0.0/js/react/react-18.2.0.min.js" defer />,
             <script
-                src="https://cdn-app.sberdevices.ru/shared-static/0.0.0/js/react-dom/react-dom-17.0.2.min.js"
+                src="https://cdn-app.sberdevices.ru/shared-static/0.0.0/js/react-dom/react-dom-18.2.0.min.js"
                 defer
             />,
         );

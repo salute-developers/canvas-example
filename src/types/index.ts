@@ -7,4 +7,4 @@ export type Category = {
 
 export type InferPromise<T extends Promise<unknown>> = T extends Promise<infer U> ? U : never;
 
-export type PlatformType = 'sberbox' | 'mobile' | 'portal' | undefined;
+export type DeviceFamily = 'sberbox' | 'mobile' | 'portal';

@@ -1,12 +1,12 @@
 import Router, { Router as RouterType, useRouter } from 'next/router';
 
-import { PlatformType } from '../types';
+import { DeviceFamily } from '../types';
 
 export const getPlatformByPath = (asPath: string) => {
     const [, platform] = asPath.match(/@(\w+)/) ?? [];
 
     return {
-        platform: platform as PlatformType,
+        platform: platform as DeviceFamily,
         isSberbox: platform === 'sberbox',
         isPortal: platform === 'portal',
         isMobile: platform === 'mobile',
