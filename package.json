@@ -1,6 +1,6 @@
 {
   "name": "@salutejs/canvas-example",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Salute Frontend Team <salute.developers@gmail.com>",
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
