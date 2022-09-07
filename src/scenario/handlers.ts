@@ -1,14 +1,31 @@
-import { createMatchers, SaluteHandler, SaluteRequest, Surface } from '@salutejs/scenario';
+import { createMatchers, SaluteHandler, SaluteRequest, Surface, Device } from '@salutejs/scenario';
+
+import { DeviceFamily } from '../types';
 
 import { data } from './data';
 import { AddNoteCommand, DeleteNoteCommand, DoneNoteCommand, NoteVariable, SetInitialNotesCommand } from './types';
 
 const { selectItem } = createMatchers<SaluteRequest<NoteVariable>>();
 
-const SURFACE_TO_PLATFORM_MAP: Partial<Record<Surface, string>> = {
+const SURFACE_TO_PLATFORM_MAP: Partial<Record<Surface, DeviceFamily>> = {
     SBERBOX: 'sberbox',
+    TIME: 'sberbox',
+    SATELLITE: 'sberbox',
+    TV: 'sberbox',
+    TV_HUAWEI: 'sberbox',
     COMPANION: 'mobile',
+    SBOL: 'mobile',
     STARGATE: 'portal',
+};
+
+const getClientType = (device: Device | undefined): DeviceFamily => {
+    if (!device?.surface) {
+        return 'sberbox';
+    }
+
+    const client = SURFACE_TO_PLATFORM_MAP[device.surface];
+
+    return client || 'mobile';
 };
 
 export const runAppHandler: SaluteHandler = ({ res, req }) => {
@@ -21,9 +38,9 @@ export const runAppHandler: SaluteHandler = ({ res, req }) => {
         payload: data.notes,
     });
 
-    const surface = req.request.payload.device?.surface ?? 'COMPANION';
-    const platform = SURFACE_TO_PLATFORM_MAP[surface];
-    res.overrideFrontendEndpoint(`${req.appInfo.frontendEndpoint}/${req.character}/@${platform}`);
+    const { device } = req.request.payload;
+
+    res.overrideFrontendEndpoint(`${req.appInfo.frontendEndpoint}/${req.character}/@${getClientType(device)}`);
 };
 
 export const noMatchHandler: SaluteHandler = ({ res }) => {

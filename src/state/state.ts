@@ -3,7 +3,7 @@ import { QueryClient } from 'react-query';
 
 import { InputActionType, SetInitialNotesCommand } from '../scenario/types';
 import { GetInitialNotesCommand, Note } from '../types/todo';
-import { getBasePathNotInComponent } from '../utils/utils';
+import { getBasePathNotInComponent, waitForRouter } from '../utils/utils';
 
 import { useAssistantQuery } from './assistantReactQuery';
 
@@ -34,6 +34,23 @@ function setNotes(notes: Note[]) {
     queryClient.setQueryData<Note[]>('notes', () => notes, { updatedAt: Date.now() + 2000 });
 }
 
+function setInitialNotes(notes: Note[]) {
+    const basePath = getBasePathNotInComponent();
+
+    if (Router.asPath === basePath) {
+        setNotes(notes);
+
+        const doneCount = notes.filter((note) => note.completed).length;
+        const undoneCount = notes.length - doneCount;
+
+        if (doneCount > undoneCount) {
+            Router.push(`${basePath}/done`);
+        } else {
+            Router.push(`${basePath}/todo`);
+        }
+    }
+}
+
 export function smartAppDataHandler(action: InputActionType) {
     switch (action.type) {
         case 'done_note':
@@ -46,20 +63,10 @@ export function smartAppDataHandler(action: InputActionType) {
             deleteNote(action.payload.id);
             break;
         case 'set_initial_notes': {
-            const basePath = getBasePathNotInComponent();
-
-            if (Router.asPath === basePath) {
-                const { payload: notes } = action;
-                setNotes(notes);
-
-                const doneCount = notes.filter((note) => note.completed).length;
-                const undoneCount = notes.length - doneCount;
-
-                if (doneCount > undoneCount) {
-                    Router.push(`${basePath}/done`);
-                } else {
-                    Router.push(`${basePath}/todo`);
-                }
+            if (Router.router) {
+                setInitialNotes(action.payload);
+            } else {
+                waitForRouter().then(() => setInitialNotes(action.payload));
             }
             break;
         }
