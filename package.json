@@ -28,7 +28,7 @@
     "test:cy:mobile": "CYPRESS_BASE_URL=${PUBLIC_URL:-'http://localhost:3000/'} CYPRESS_REPORT_FOLDER=cypress/ REPORT_FOLDER=cypress/ npm run cy:run -- --config-file cypress/config/mobile.json"
   },
   "dependencies": {
-    "@salutejs/client": "1.0.1--canary.1.128858c45774b1b1b2b8b8523d8aca3e90efb055.0",
+    "@salutejs/client": "1.6.2",
     "@salutejs/plasma-core": "1.68.0",
     "@salutejs/plasma-icons": "1.94.0",
     "@salutejs/plasma-tokens": "1.21.0",
