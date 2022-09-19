@@ -18,9 +18,9 @@ const SURFACE_TO_PLATFORM_MAP: Partial<Record<Surface, DeviceFamily>> = {
     STARGATE: 'portal',
 };
 
-const getClientType = (device: Device | undefined): DeviceFamily => {
+const getDeviceFamily = (device: Device | undefined): DeviceFamily => {
     if (!device?.surface) {
-        return 'sberbox';
+        return 'mobile';
     }
 
     const client = SURFACE_TO_PLATFORM_MAP[device.surface];
@@ -40,7 +40,7 @@ export const runAppHandler: SaluteHandler = ({ res, req }) => {
 
     const { device } = req.request.payload;
 
-    res.overrideFrontendEndpoint(`${req.appInfo.frontendEndpoint}/${req.character}/@${getClientType(device)}`);
+    res.overrideFrontendEndpoint(`${req.appInfo.frontendEndpoint}/${req.character}/@${getDeviceFamily(device)}`);
 };
 
 export const noMatchHandler: SaluteHandler = ({ res }) => {
