@@ -1,3 +1,15 @@
+# v1.0.4 (Mon Sep 19 2022)
+
+#### 🐛 Bug Fix
+
+- SPEED-524: Use 'mobile' as the default DeviceFamilyType, update packages [#5](https://github.com/salute-developers/canvas-example/pull/5) ([@RPG59](https://github.com/RPG59))
+
+#### Authors: 1
+
+- Ivan Kanshin ([@RPG59](https://github.com/RPG59))
+
+---
+
 # v1.0.3 (Wed Sep 07 2022)
 
 #### 🐛 Bug Fix
