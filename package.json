@@ -43,7 +43,8 @@
   },
   "devDependencies": {
     "@cypress/code-coverage": "3.9.10",
-    "@salutejs/eslint-config": "0.4.0",
+    "@salutejs/eslint-config": "0.6.0",
+    "@salutejs/prettier-config": "0.3.0",
     "@salutejs/stylelint-config": "0.3.0",
     "@types/cypress-image-snapshot": "3.1.6",
     "@types/react": "18.0.18",
