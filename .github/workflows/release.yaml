@@ -28,10 +28,10 @@ jobs:
         # https://github.com/intuit/auto/issues/1030
         run: git config --local --unset http.https://github.com/.extraheader
 
-      - name: Use Node.js 12.x
+      - name: Use Node.js 16
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 16
 
       - name: Cache node modules
         uses: actions/cache@v1
