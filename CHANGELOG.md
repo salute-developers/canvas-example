@@ -1,3 +1,15 @@
+# v1.0.5 (Fri Oct 07 2022)
+
+#### 🐛 Bug Fix
+
+- SPEED-555: migration to node 16 [#6](https://github.com/salute-developers/canvas-example/pull/6) ([@RPG59](https://github.com/RPG59))
+
+#### Authors: 1
+
+- Ivan Kanshin ([@RPG59](https://github.com/RPG59))
+
+---
+
 # v1.0.4 (Mon Sep 19 2022)
 
 #### 🐛 Bug Fix
