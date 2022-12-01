@@ -8,6 +8,7 @@ module.exports = {
     reactStrictMode: true,
     // выключает заголовок X-Powered-By: Next.js
     poweredByHeader: false,
+    output: 'standalone',
     env: {
         NEXT_PUBLIC_RELEASE: process.env.RELEASE || 'localdev',
         NEXT_PUBLIC_APP_NAME: appName,
