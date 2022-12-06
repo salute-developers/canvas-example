@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { Container, DeviceThemeProvider } from '@salutejs/plasma-ui';
 import { QueryClientProvider } from 'react-query';
 
-import { useCharacterTheme } from '../utils/character';
+import { useCharacterTheme } from '../utils/characterInCss';
 import { usePlatform } from '../utils/platform';
 import { queryClient } from '../state/state';
 import { GlobalInsets } from '../components/GlobalInsetsVars';

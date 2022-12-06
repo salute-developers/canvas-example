@@ -8,11 +8,7 @@ async function redirects() {
         const uaListString = uaList.join('|');
         const matchingValue = `.*(${uaListString}).*`;
 
-        matches.push(getRedirect('/', `/sber/@${platform}`, matchingValue));
-
-        for (const character of ['sber', 'joy', 'eva']) {
-            matches.push(getRedirect(`/${character}`, `/${character}/@${platform}`, matchingValue));
-        }
+        matches.push(getRedirect('/', `/@${platform}`, matchingValue));
     }
 
     return matches;
