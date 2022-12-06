@@ -5,16 +5,14 @@ import {
     AssistantClientCustomizedCommand,
     AssistantNavigationCommand,
     SdkMeta,
-    CharacterId,
 } from '@salutejs/client';
-import Router from 'next/router';
 
 import { Assistant, OutputActionType } from '../types/todo';
 import { InputActionType } from '../scenario/types';
 import { smartAppDataHandler } from '../state/state';
 
-import { replaceCharacterInUrl } from './character';
-import { isRunInCypress, waitForRouter } from './utils';
+import { isRunInCypress } from './utils';
+import { replaceCharacter } from './characterInCss';
 
 interface AssistantSmartAppData {
     type: 'smart_app_data';
@@ -29,24 +27,12 @@ export const assistantState: { current: AssistantAppState } = {
 };
 export const getState = () => assistantState.current;
 
-const replaceRouterCharacter = (character: CharacterId) => {
-    const newUrl = replaceCharacterInUrl(character);
-
-    if (newUrl !== Router.asPath) {
-        Router.replace(newUrl);
-    }
-};
-
 export const dataHandler = (command: AssistantClientCustomizedCommand<AssistantSmartAppData>) => {
     let navigation: AssistantNavigationCommand['navigation'] | undefined;
 
     switch (command.type) {
         case 'character':
-            if (Router.router) {
-                replaceRouterCharacter(command.character.id);
-            } else {
-                waitForRouter().then(() => replaceRouterCharacter(command.character.id));
-            }
+            replaceCharacter(command.character.id);
             break;
         case 'navigation':
             navigation = (command as AssistantNavigationCommand).navigation;
