@@ -1,3 +1,15 @@
+# v1.0.6 (Mon Dec 12 2022)
+
+#### 🐛 Bug Fix
+
+- SPEED-532: node18, add .npmrc to package, update scenario [#7](https://github.com/salute-developers/canvas-example/pull/7) ([@RPG59](https://github.com/RPG59))
+
+#### Authors: 1
+
+- Ivan Kanshin ([@RPG59](https://github.com/RPG59))
+
+---
+
 # v1.0.5 (Fri Oct 07 2022)
 
 #### 🐛 Bug Fix
