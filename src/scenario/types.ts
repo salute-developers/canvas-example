@@ -1,5 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { SaluteCommand, SaluteRequestVariable } from '@salutejs/scenario';
+import { SaluteRequestVariable } from '@salutejs/scenario';
+
+type SaluteCommand = {
+    type: string;
+    payload?: Record<string, unknown> | Array<unknown>;
+};
 
 export interface Note {
     id: string;

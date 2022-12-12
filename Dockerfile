@@ -1,33 +1,31 @@
-FROM node:16.17.1-alpine as build
-
-# Не отправлять телеметрию в https://telemetry.nextjs.org/api/v1/record
-# Подробнее тут: https://nextjs.org/telemetry
-ENV NEXT_TELEMETRY_DISABLED=1
-
+FROM node:18.12.0-alpine as deps
 WORKDIR /app
 
 COPY package*.json ./
 COPY .npmrc ./
+
 RUN npm ci
 
+FROM node:18.12.0-alpine as build
+WORKDIR /app
+ENV NEXT_TELEMETRY_DISABLED=1
+
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+
 RUN npm run build
 
-FROM node:16.17.1-alpine
+FROM node:18.12.0-alpine
 
-ENV HOME /app
+FROM node:18.12.0-alpine as runner
+WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
-WORKDIR ${HOME}
 
-COPY --from=build  /app/node_modules ./node_modules
-COPY --from=build  /app/package*.json ./
-COPY --from=build  /app/next.config.js ./
-COPY --from=build  /app/public ./public
-COPY --from=build  /app/.next ./.next
-COPY --from=build  /app/config-helpers ./config-helpers
+COPY --from=build --chown=nobody:nobody /app/public ./public
+COPY --from=build --chown=nobody:nobody /app/package.json ./
+COPY --from=build --chown=nobody:nobody /app/.next/standalone ./
+COPY --from=build --chown=nobody:nobody /app/.next/static ./.next/static
 
-# Для того, чтобы next мог писать кеш
-RUN chmod -R 777 /app/.next/cache
 
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
