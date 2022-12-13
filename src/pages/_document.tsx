@@ -1,6 +1,7 @@
 import Document, { Html as NextHtml, Head as NextHead, Main, NextScript, DocumentContext } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
+import { readAppInitiaData } from '../init';
 import { usePlatform } from '../utils/platform';
 
 class ProductionHead extends NextHead {
@@ -36,6 +37,11 @@ const Html = ({ asPath }: { asPath: string }) => {
                         crossOrigin="anonymous"
                     />
                 )}
+                <script
+                    type="text/javascript"
+                    // eslint-disable-next-line react/no-danger
+                    dangerouslySetInnerHTML={{ __html: `(${readAppInitiaData.toString()})()` }}
+                />
             </Head>
             <body>
                 <Main />
