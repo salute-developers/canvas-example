@@ -1,4 +1,4 @@
-import Router, { Router as RouterType, useRouter } from 'next/router';
+import Router from 'next/router';
 
 import { DeviceFamily } from '../types';
 
@@ -11,13 +11,6 @@ export const getPlatformByPath = (asPath: string) => {
         isPortal: platform === 'portal',
         isMobile: platform === 'mobile',
     };
-};
-
-// работает корректно для пре-рендера
-export const usePlatform = (serverRouter?: RouterType | { asPath: string }) => {
-    const { asPath } = useRouter() ?? serverRouter;
-
-    return getPlatformByPath(asPath);
 };
 
 // вызывать только на клиенте

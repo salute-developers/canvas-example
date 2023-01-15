@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { HeaderButton, NeuHeader } from '@salutejs/plasma-ui';
+import { Button, NeuHeader } from '@salutejs/plasma-ui';
 import Router from 'next/router';
+import { useSection } from '@salutejs/spatial';
 
 import { addNote, markNoteDone, useInitialNotes } from '../state/state';
 import { useAssistantMutation } from '../state/assistantReactQuery';
@@ -21,6 +22,7 @@ export const PageNote = ({ noteFilter, title = '', nextPageUrl }: Props) => {
     const { data: notes = [], isLoading, isIdle } = useInitialNotes();
     const filteredNotes = notes.filter(noteFilter);
     const basePath = useBasePath();
+    const [sectionProps] = useSection('NoteSection');
 
     useEffect(() => {
         assistantState.current = {
@@ -53,11 +55,11 @@ export const PageNote = ({ noteFilter, title = '', nextPageUrl }: Props) => {
     const arrowClickHandler = arrowState === 'minimize' ? assistantInstance?.close : Router.back;
 
     return (
-        <>
+        <div {...sectionProps}>
             <NeuHeader title={title} arrow={arrowState} onArrowClick={arrowClickHandler}>
-                <HeaderButton onClick={() => Router.push(`${basePath}/${nextPageUrl}`)}>
+                <Button size="s" onClick={() => Router.push(`${basePath}/${nextPageUrl}`)}>
                     {`Go to ${nextPageUrl}`}
-                </HeaderButton>
+                </Button>
             </NeuHeader>
             <NoteList
                 onInputSubmit={(e) => {
@@ -70,6 +72,6 @@ export const PageNote = ({ noteFilter, title = '', nextPageUrl }: Props) => {
                 inputValue={note}
                 onInputChange={setNote}
             />
-        </>
+        </div>
     );
 };

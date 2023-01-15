@@ -1,7 +1,7 @@
 import Document, { Html as NextHtml, Head as NextHead, Main, NextScript, DocumentContext } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
-import { usePlatform } from '../utils/platform';
+import { getPlatformByPath } from '../utils/platform';
 
 class ProductionHead extends NextHead {
     getScripts(files: Parameters<NextHead['getScripts']>[0]) {
@@ -24,7 +24,7 @@ class ProductionHead extends NextHead {
 const Head = process.env.NODE_ENV === 'development' ? NextHead : ProductionHead;
 
 const Html = ({ asPath }: { asPath: string }) => {
-    const { isMobile } = usePlatform({ asPath });
+    const { isMobile } = getPlatformByPath(asPath);
 
     return (
         <NextHtml>

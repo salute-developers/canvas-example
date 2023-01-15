@@ -11,6 +11,7 @@ import {
     Checkbox,
 } from '@salutejs/plasma-ui';
 import { FormEvent } from 'react';
+import { SECTION_ITEM_CLASS_NAME } from '@salutejs/spatial';
 
 import { Note } from '../types/todo';
 

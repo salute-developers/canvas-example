@@ -3,6 +3,7 @@ const { redirects } = require('./config-helpers/redirects/redirects');
 const { name: appName } = require('./package.json');
 
 module.exports = {
+    transpilePackages: ['@salutejs/spatial'],
     // адрес CDN для статики
     assetPrefix: process.env.PUBLIC_URL || '',
     reactStrictMode: true,
@@ -13,10 +14,6 @@ module.exports = {
         NEXT_PUBLIC_RELEASE: process.env.RELEASE || 'localdev',
         NEXT_PUBLIC_APP_NAME: appName,
         NEXT_PUBLIC_IS_DEVELOPMENT: process.env.NODE_ENV === 'development',
-    },
-    eslint: {
-        // eslint-config-next кофликтует с нашим '../../.eslintrc.js'
-        ignoreDuringBuilds: true,
     },
     webpack: (config, options) => {
         const { isServer } = options;

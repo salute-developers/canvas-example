@@ -1,9 +1,10 @@
 import Router from 'next/router';
 
 import { DeviceFamily } from '../types';
+import { usePlatform } from '../hooks/usePlatform';
 
 import { useCharacter } from './character';
-import { getPlatformByPath, usePlatform } from './platform';
+import { getPlatformByPath } from './platform';
 
 // работает корректно для пре-рендера
 export const useBasePath = () => {
