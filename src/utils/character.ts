@@ -2,7 +2,7 @@ import { CharacterId } from '@salutejs/client';
 import { GetStaticPaths } from 'next';
 import Router, { useRouter } from 'next/router';
 import { createGlobalStyle } from 'styled-components';
-import { darkEva, darkJoy, darkSber } from '@salutejs/plasma-tokens/themes';
+import { darkEva, darkJoy, darkSber } from '@salutejs/plasma-tokens';
 
 const themes = {
     sber: createGlobalStyle(darkSber),
