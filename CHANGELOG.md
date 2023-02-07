@@ -1,3 +1,15 @@
+# v1.0.7 (Tue Feb 07 2023)
+
+#### 🐛 Bug Fix
+
+- SPEED-639: add @salutejs/spatial, update browserlist [#10](https://github.com/salute-developers/canvas-example/pull/10) ([@RPG59](https://github.com/RPG59))
+
+#### Authors: 1
+
+- Ivan Kanshin ([@RPG59](https://github.com/RPG59))
+
+---
+
 # v1.0.6 (Mon Dec 12 2022)
 
 #### 🐛 Bug Fix
