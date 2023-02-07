@@ -29,13 +29,14 @@
   },
   "dependencies": {
     "@salutejs/client": "1.6.2",
-    "@salutejs/plasma-core": "1.68.0",
-    "@salutejs/plasma-icons": "1.94.0",
-    "@salutejs/plasma-tokens": "1.21.0",
-    "@salutejs/plasma-ui": "1.125.0",
+    "@salutejs/plasma-core": "1.90.0",
+    "@salutejs/plasma-icons": "1.118.0",
+    "@salutejs/plasma-tokens": "1.32.0",
+    "@salutejs/plasma-ui": "1.159.0",
     "@salutejs/scenario": "0.27.2",
+    "@salutejs/spatial": "3.0.1",
     "@salutejs/storage-adapter-memory": "0.23.0",
-    "next": "12.2.5",
+    "next": "13.1.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-query": "3.39.2",
@@ -85,5 +86,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "browserslist": [">1%", "not IE 11", "not op_mini all"]
 }

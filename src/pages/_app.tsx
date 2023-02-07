@@ -3,19 +3,21 @@ import { StyleSheetManager } from 'styled-components';
 import Head from 'next/head';
 import { Container, DeviceThemeProvider } from '@salutejs/plasma-ui';
 import { QueryClientProvider } from 'react-query';
+import { spatnavInstance } from '@salutejs/spatial';
+import { useEffect } from 'react';
 
 import { useCharacterTheme } from '../utils/character';
-import { usePlatform } from '../utils/platform';
 import { queryClient } from '../state/state';
 import { GlobalInsets } from '../components/GlobalInsetsVars';
 import { earlyInit } from '../utils/assistant';
 import { ProjectGlobalStyle } from '../components/ProjectGlobalStyle';
+import { getPlatformByPath } from '../utils/platform';
 
 // инициализируем наше приложение данными до инициализации ассистента
 earlyInit();
 
 function MyApp({ Component, pageProps, router }: AppProps) {
-    const { platform, isSberbox, isPortal } = usePlatform(router);
+    const { platform, isSberbox, isPortal } = getPlatformByPath(router.asPath);
     const CharacterTheme = useCharacterTheme();
 
     const detectDeviceCallback = () => {
@@ -29,6 +31,18 @@ function MyApp({ Component, pageProps, router }: AppProps) {
                 return 'sberBox';
         }
     };
+
+    useEffect(() => {
+        if (isSberbox || isPortal) {
+            spatnavInstance.init();
+        }
+
+        return () => {
+            if (isSberbox || isPortal) {
+                spatnavInstance.unInit();
+            }
+        };
+    }, [isSberbox, isPortal]);
 
     return (
         <>
