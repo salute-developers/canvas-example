@@ -1,17 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { addMatchImageSnapshotPlugin } = require('cypress-image-snapshot/plugin');
 const coverage = require('@cypress/code-coverage/task');
 const debug = require('debug')('e2e');
 
-/**
- * @type {Cypress.PluginConfig}
- */
-module.exports = (on, config) => {
-    addMatchImageSnapshotPlugin(on, config);
-
+export const initCypressPlugins = (on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions) => {
     coverage(on, config);
 
-    on('before:browser:launch', (browser = {}, launchOptions) => {
+    on('before:browser:launch', (browser, launchOptions) => {
         debug(browser);
 
         if (browser.name === 'chrome' || browser.name === 'chromium') {

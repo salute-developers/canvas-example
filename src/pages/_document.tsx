@@ -29,7 +29,7 @@ const Html = ({ asPath }: { asPath: string }) => {
     return (
         <NextHtml>
             <Head>
-                {isMobile && (
+                {Boolean(isMobile) && (
                     <link
                         rel="stylesheet"
                         href="https://cdn-app.sberdevices.ru/shared-static/0.0.0/styles/SBSansText.0.1.0.css"
