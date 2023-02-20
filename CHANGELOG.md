@@ -1,3 +1,15 @@
+# v1.0.8 (Mon Feb 20 2023)
+
+#### 🐛 Bug Fix
+
+- SPEED-647: resolve deps conflicts, remove blockHosts from cypress config [#12](https://github.com/salute-developers/canvas-example/pull/12) ([@RPG59](https://github.com/RPG59))
+
+#### Authors: 1
+
+- Ivan Kanshin ([@RPG59](https://github.com/RPG59))
+
+---
+
 # v1.0.7 (Tue Feb 07 2023)
 
 #### 🐛 Bug Fix
