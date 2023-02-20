@@ -1,6 +1,6 @@
 {
   "name": "@salutejs/canvas-example",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "author": "Salute Frontend Team <salute.developers@gmail.com>",
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
@@ -85,5 +85,10 @@
   "publishConfig": {
     "access": "public"
   },
-  "browserslist": [">0.1%", "not IE 11", "not op_mini all", "last 2 Edge versions"]
+  "browserslist": [
+    ">0.1%",
+    "not IE 11",
+    "not op_mini all",
+    "last 2 Edge versions"
+  ]
 }
