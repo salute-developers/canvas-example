@@ -15,6 +15,9 @@ module.exports = {
         NEXT_PUBLIC_APP_NAME: appName,
         NEXT_PUBLIC_IS_DEVELOPMENT: process.env.NODE_ENV === 'development',
     },
+    compiler: {
+        styledComponents: true,
+    },
     webpack: (config, options) => {
         const { isServer } = options;
 
