@@ -1,3 +1,15 @@
+# v1.0.9 (Wed Mar 01 2023)
+
+#### 🐛 Bug Fix
+
+- ssr fix [#13](https://github.com/salute-developers/canvas-example/pull/13) ([@KateKate](https://github.com/KateKate))
+
+#### Authors: 1
+
+- Ekaterina Anishkina ([@KateKate](https://github.com/KateKate))
+
+---
+
 # v1.0.8 (Mon Feb 20 2023)
 
 #### 🐛 Bug Fix
