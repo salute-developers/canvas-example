@@ -28,10 +28,10 @@ jobs:
         # https://github.com/intuit/auto/issues/1030
         run: git config --local --unset http.https://github.com/.extraheader
 
-      - name: Use Node.js 16
-        uses: actions/setup-node@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version-file: ".nvmrc"
 
       - name: Cache node modules
         uses: actions/cache@v1
@@ -43,7 +43,7 @@ jobs:
 
       - name: Setup packages
         run: |
-          npm i
+          npm ci
 
       - name: Lint
         run: npm run lint
@@ -70,7 +70,7 @@ jobs:
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GH_TOKEN }}
-          message: 'chore: update package-locks [skip ci]'
+          message: "chore: update package-locks [skip ci]"
           branch: ${{ steps.extract_branch.outputs.branch }}
           author_name: Salute Frontend Team
           author_email: salute.developers@gmail.com
