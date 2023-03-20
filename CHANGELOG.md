@@ -1,3 +1,15 @@
+# v1.0.10 (Mon Mar 20 2023)
+
+#### 🐛 Bug Fix
+
+- fix: remove plasma-core dep [#14](https://github.com/salute-developers/canvas-example/pull/14) ([@Yeti-or](https://github.com/Yeti-or))
+
+#### Authors: 1
+
+- Vasiliy ([@Yeti-or](https://github.com/Yeti-or))
+
+---
+
 # v1.0.9 (Wed Mar 01 2023)
 
 #### 🐛 Bug Fix
