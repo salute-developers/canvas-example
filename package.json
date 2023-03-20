@@ -29,7 +29,6 @@
   },
   "dependencies": {
     "@salutejs/client": "1.6.2",
-    "@salutejs/plasma-core": "1.90.0",
     "@salutejs/plasma-icons": "1.118.0",
     "@salutejs/plasma-tokens": "1.32.0",
     "@salutejs/plasma-ui": "1.159.0",
