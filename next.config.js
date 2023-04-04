@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { redirects } = require('./config-helpers/redirects/redirects');
 const { name: appName } = require('./package.json');
 
 module.exports = {
@@ -35,5 +34,4 @@ module.exports = {
 
         return config;
     },
-    redirects,
 };
