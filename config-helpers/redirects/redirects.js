@@ -6,7 +6,7 @@ async function redirects() {
 
     for (const [platform, uaList] of Object.entries(uaListByPlatform)) {
         const uaListString = uaList.join('|');
-        const matchingValue = `.*(${uaListString}).*`;
+        const matchingValue = `/\b${uaListString}[^a-zA-Z]?/i`;
 
         matches.push(getRedirect('/', `/sber/@${platform}`, matchingValue));
 
