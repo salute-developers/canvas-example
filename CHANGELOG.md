@@ -1,3 +1,15 @@
+# v1.0.11 (Tue Apr 04 2023)
+
+#### 🐛 Bug Fix
+
+- feat: changed redirects regExp [#15](https://github.com/salute-developers/canvas-example/pull/15) ([@arsenykruglikov](https://github.com/arsenykruglikov))
+
+#### Authors: 1
+
+- Arseny Kruglikov ([@arsenykruglikov](https://github.com/arsenykruglikov))
+
+---
+
 # v1.0.10 (Mon Mar 20 2023)
 
 #### 🐛 Bug Fix
