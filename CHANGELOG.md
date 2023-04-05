@@ -1,3 +1,15 @@
+# v1.0.12 (Wed Apr 05 2023)
+
+#### 🐛 Bug Fix
+
+- fix: used middleware instead of redirects in next.config [#20](https://github.com/salute-developers/canvas-example/pull/20) ([@arsenykruglikov](https://github.com/arsenykruglikov))
+
+#### Authors: 1
+
+- Arseny Kruglikov ([@arsenykruglikov](https://github.com/arsenykruglikov))
+
+---
+
 # v1.0.11 (Tue Apr 04 2023)
 
 #### 🐛 Bug Fix
