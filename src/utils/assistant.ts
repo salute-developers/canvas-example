@@ -81,7 +81,12 @@ export const initAssistant = () => {
         getState,
     });
 
-    if (process.env.NEXT_PUBLIC_SMARTAPP_TOKEN && process.env.NEXT_PUBLIC_SMARTAPP_INIT_PHRASE && !isRunInCypress) {
+    if (
+        process.env.NODE_ENV === 'development' &&
+        process.env.NEXT_PUBLIC_SMARTAPP_TOKEN &&
+        process.env.NEXT_PUBLIC_SMARTAPP_INIT_PHRASE &&
+        !isRunInCypress
+    ) {
         assistant = createSmartappDebugger({
             token: process.env.NEXT_PUBLIC_SMARTAPP_TOKEN,
             initPhrase: process.env.NEXT_PUBLIC_SMARTAPP_INIT_PHRASE,
