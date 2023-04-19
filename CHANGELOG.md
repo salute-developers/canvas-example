@@ -1,3 +1,15 @@
+# v1.0.13 (Wed Apr 19 2023)
+
+#### 🐛 Bug Fix
+
+- SPEED-928: убрать createSmartappDebugger из бандла [#23](https://github.com/salute-developers/canvas-example/pull/23) (evanishkina@sberbank.ru)
+
+#### Authors: 1
+
+- Екатерина Анишкина (evanishkina@sberbank.ru)
+
+---
+
 # v1.0.12 (Wed Apr 05 2023)
 
 #### 🐛 Bug Fix
