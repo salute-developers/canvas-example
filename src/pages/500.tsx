@@ -4,7 +4,6 @@ const error = {
     status: 'Ошибка 500',
     message: 'Что-то пошло не так, но мы уже разбираемся',
 };
-function ServerError() {
-    return <ErrorPage error={error} />;
+export default function erverError() {
+    return <ErrorPage {...error} />;
 }
-export default ServerError;
