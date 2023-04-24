@@ -12,11 +12,11 @@ const StyledContainer = styled(Container)`
     }
 `;
 
-export const ErrorPage = (error: { status: string; message?: string }) => {
+export const ErrorPage = ({ status, message }: { status: string; message?: string }) => {
     return (
         <StyledContainer>
-            <Col>{error.status}</Col>
-            {error.message ? <Col>{error.message}</Col> : null}
+            <Col>{status}</Col>
+            {message ? <Col>{message}</Col> : null}
         </StyledContainer>
     );
 };

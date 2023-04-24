@@ -1,9 +1,5 @@
 import { ErrorPage } from '../components/ErrorPage';
 
-const error = {
-    status: 'Ошибка 500',
-    message: 'Что-то пошло не так, но мы уже разбираемся',
-};
-export default function erverError() {
-    return <ErrorPage {...error} />;
+export default function ServerError() {
+    return <ErrorPage status="Ошибка 404" message="Что-то пошло не так, но мы уже разбираемся" />;
 }
