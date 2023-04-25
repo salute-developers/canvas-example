@@ -1,3 +1,15 @@
+# v1.0.15 (Tue Apr 25 2023)
+
+#### 🐛 Bug Fix
+
+- use default next browserlist [#26](https://github.com/salute-developers/canvas-example/pull/26) ([@KateKate](https://github.com/KateKate))
+
+#### Authors: 1
+
+- Ekaterina Anishkina ([@KateKate](https://github.com/KateKate))
+
+---
+
 # v1.0.14 (Wed Apr 19 2023)
 
 #### 🐛 Bug Fix
