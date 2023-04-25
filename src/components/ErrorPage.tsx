@@ -8,7 +8,7 @@ const StyledContainer = styled(Container)`
     @media (max-width: 768px) {
         margin-top: 5rem;
         text-align: center;
-        padding: 5px;
+        margin-top: 5rem;
     }
 `;
 
@@ -16,7 +16,7 @@ export const ErrorPage = ({ status, message }: { status: string; message?: strin
     return (
         <StyledContainer>
             <Col>{status}</Col>
-            {message ? <Col>{message}</Col> : null}
+            {!!message && <Col>{message}</Col>}
         </StyledContainer>
     );
 };
