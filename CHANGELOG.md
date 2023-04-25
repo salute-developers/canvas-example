@@ -1,3 +1,16 @@
+# v1.0.16 (Tue Apr 25 2023)
+
+#### 🐛 Bug Fix
+
+- [эталон] сделал экран с ошибкой 404/500 [#25](https://github.com/salute-developers/canvas-example/pull/25) (ISeTrofimov@sberbank.ru [@Troff8](https://github.com/Troff8))
+
+#### Authors: 2
+
+- Troff ([@Troff8](https://github.com/Troff8))
+- troff8 (ISeTrofimov@sberbank.ru)
+
+---
+
 # v1.0.15 (Tue Apr 25 2023)
 
 #### 🐛 Bug Fix
