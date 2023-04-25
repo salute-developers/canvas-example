@@ -16,7 +16,7 @@ export const ErrorPage = ({ status, message }: { status: string; message?: strin
     return (
         <StyledContainer>
             <Col>{status}</Col>
-            {message && <Col>{message}</Col>}
+            {!!message && <Col>{message}</Col>}
         </StyledContainer>
     );
 };
