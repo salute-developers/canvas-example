@@ -1,3 +1,52 @@
+# v1.0.17 (Tue Apr 25 2023)
+
+#### 🐛 Bug Fix
+
+- Speed 149 [#29](https://github.com/salute-developers/canvas-example/pull/29) (ISeTrofimov@sberbank.ru [@Troff8](https://github.com/Troff8))
+
+#### Authors: 2
+
+- Troff ([@Troff8](https://github.com/Troff8))
+- troff8 (ISeTrofimov@sberbank.ru)
+
+---
+
+# v1.0.15 (Tue Apr 25 2023)
+
+#### 🐛 Bug Fix
+
+- use default next browserlist [#26](https://github.com/salute-developers/canvas-example/pull/26) ([@KateKate](https://github.com/KateKate))
+
+#### Authors: 1
+
+- Ekaterina Anishkina ([@KateKate](https://github.com/KateKate))
+
+---
+
+# v1.0.14 (Wed Apr 19 2023)
+
+#### 🐛 Bug Fix
+
+- SPEED-928: убрать createSmartappDebugger из бандла [#24](https://github.com/salute-developers/canvas-example/pull/24) ([@KateKate](https://github.com/KateKate))
+
+#### Authors: 1
+
+- Ekaterina Anishkina ([@KateKate](https://github.com/KateKate))
+
+---
+
+# v1.0.12 (Wed Apr 05 2023)
+
+#### 🐛 Bug Fix
+
+- fix: used middleware instead of redirects in next.config [#20](https://github.com/salute-developers/canvas-example/pull/20) ([@arsenykruglikov](https://github.com/arsenykruglikov))
+
+#### Authors: 1
+
+- Arseny Kruglikov ([@arsenykruglikov](https://github.com/arsenykruglikov))
+
+---
+
 # v1.0.11 (Tue Apr 04 2023)
 
 #### 🐛 Bug Fix
