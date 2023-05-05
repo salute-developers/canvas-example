@@ -1,3 +1,16 @@
+# v1.0.18 (Fri May 05 2023)
+
+#### 🐛 Bug Fix
+
+- Speed 149 [#35](https://github.com/salute-developers/canvas-example/pull/35) (ISeTrofimov@sberbank.ru [@Troff8](https://github.com/Troff8))
+
+#### Authors: 2
+
+- Troff ([@Troff8](https://github.com/Troff8))
+- troff8 (ISeTrofimov@sberbank.ru)
+
+---
+
 # v1.0.17 (Tue Apr 25 2023)
 
 #### 🐛 Bug Fix
