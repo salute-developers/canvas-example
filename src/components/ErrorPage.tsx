@@ -8,7 +8,7 @@ const StyledContainer = styled(Container)`
     @media (max-width: 768px) {
         margin-top: 5rem;
         text-align: center;
-        margin-top: 5rem;
+        padding: 2rem;
     }
 `;
 
