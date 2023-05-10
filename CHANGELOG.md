@@ -1,3 +1,15 @@
+# v1.0.19 (Wed May 10 2023)
+
+#### 🐛 Bug Fix
+
+- SPEED-149: add 500, 404 page, fix stylelint [#38](https://github.com/salute-developers/canvas-example/pull/38) ([@KateKate](https://github.com/KateKate))
+
+#### Authors: 1
+
+- Ekaterina Anishkina ([@KateKate](https://github.com/KateKate))
+
+---
+
 # v1.0.15 (Tue Apr 25 2023)
 
 #### 🐛 Bug Fix
