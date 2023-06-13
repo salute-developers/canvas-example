@@ -1,3 +1,15 @@
+# v1.0.20 (Tue Jun 13 2023)
+
+#### 🐛 Bug Fix
+
+- SPEED-987: spatial for PageIndex, refactoring [#40](https://github.com/salute-developers/canvas-example/pull/40) ([@KateKate](https://github.com/KateKate))
+
+#### Authors: 1
+
+- Ekaterina Anishkina ([@KateKate](https://github.com/KateKate))
+
+---
+
 # v1.0.19 (Wed May 10 2023)
 
 #### 🐛 Bug Fix
