@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import {
     Card,
     CardContent,
@@ -10,8 +11,7 @@ import {
     TextBox,
     Checkbox,
 } from '@salutejs/plasma-ui';
-import { FormEvent } from 'react';
-import { SECTION_ITEM_CLASS_NAME } from '@salutejs/spatial';
+import { useSection } from '@salutejs/spatial';
 
 import { Note } from '../types/todo';
 
@@ -25,15 +25,29 @@ type Props = {
     inputValue?: string;
     notes?: Note[];
     onCheckNote?: (note: Note) => void;
-    onInputSubmit?: (e: FormEvent<HTMLFormElement>) => void;
+    onInputSubmit?: React.FormEventHandler<HTMLFormElement>;
     onInputChange?: (newValue: string) => void;
 };
 
 const SKELETON_NOTES = [NULL_NOTE, NULL_NOTE, NULL_NOTE];
 
+const StyledContainer = styled(Container)`
+    margin: 5rem 0 7rem;
+`;
+
+const StyledRow = styled(Row)`
+    margin-top: 2rem;
+`;
+
+const StyledCol = styled(Col)`
+    margin-bottom: 1rem;
+`;
+
 export const NoteList = ({ notes = SKELETON_NOTES, onCheckNote, onInputSubmit, inputValue, onInputChange }: Props) => {
+    const [section] = useSection('NoteList');
+
     return (
-        <Container style={{ margin: '5rem 0 7rem' }}>
+        <StyledContainer {...section}>
             <Row>
                 <Col size={12} sizeXL={6} offsetXL={3}>
                     <form onSubmit={onInputSubmit}>
@@ -41,14 +55,14 @@ export const NoteList = ({ notes = SKELETON_NOTES, onCheckNote, onInputSubmit, i
                             label="Add Note"
                             disabled={!onInputSubmit}
                             value={inputValue}
-                            onChange={(e) => onInputChange && onInputChange(e.target.value)}
+                            onChange={(e) => onInputChange?.(e.target.value)}
                         />
                     </form>
                 </Col>
             </Row>
-            <Row style={{ marginTop: '2rem' }}>
+            <StyledRow>
                 {notes.map((n, i) => (
-                    <Col key={i} size={12} sizeXL={6} offsetXL={3} style={{ marginBottom: '1rem' }}>
+                    <StyledCol key={i} size={12} sizeXL={6} offsetXL={3}>
                         <Card>
                             <CardContent compact>
                                 {n === NULL_NOTE ? (
@@ -63,9 +77,9 @@ export const NoteList = ({ notes = SKELETON_NOTES, onCheckNote, onInputSubmit, i
                                 )}
                             </CardContent>
                         </Card>
-                    </Col>
+                    </StyledCol>
                 ))}
-            </Row>
-        </Container>
+            </StyledRow>
+        </StyledContainer>
     );
 };

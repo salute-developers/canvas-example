@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Button, NeuHeader } from '@salutejs/plasma-ui';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 import { useSection } from '@salutejs/spatial';
 
 import { addNote, markNoteDone, useInitialNotes } from '../state/state';
@@ -14,11 +14,12 @@ import { NoteList } from './NoteList';
 
 type Props = {
     noteFilter: (note: Note) => boolean;
-    title?: string;
     nextPageUrl: string;
+    title?: string;
 };
 
 export const PageNote = ({ noteFilter, title = '', nextPageUrl }: Props) => {
+    const { push, back } = useRouter();
     const { data: notes = [], isLoading, isIdle } = useInitialNotes();
     const filteredNotes = notes.filter(noteFilter);
     const basePath = useBasePath();
@@ -52,12 +53,12 @@ export const PageNote = ({ noteFilter, title = '', nextPageUrl }: Props) => {
     );
 
     const arrowState = isServer || window.history.state.idx <= 1 ? 'minimize' : 'back';
-    const arrowClickHandler = arrowState === 'minimize' ? assistantInstance?.close : Router.back;
+    const arrowClickHandler = arrowState === 'minimize' ? assistantInstance?.close : back;
 
     return (
         <div {...sectionProps}>
             <NeuHeader title={title} arrow={arrowState} onArrowClick={arrowClickHandler}>
-                <Button size="s" onClick={() => Router.push(`${basePath}/${nextPageUrl}`)}>
+                <Button size="s" onClick={() => push(`${basePath}/${nextPageUrl}`)}>
                     {`Go to ${nextPageUrl}`}
                 </Button>
             </NeuHeader>
