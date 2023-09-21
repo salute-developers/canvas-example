@@ -1,3 +1,15 @@
+# v1.0.21 (Thu Sep 21 2023)
+
+#### 🐛 Bug Fix
+
+- deps: bump @salutejs/client [#43](https://github.com/salute-developers/canvas-example/pull/43) ([@sasha-tlt](https://github.com/sasha-tlt))
+
+#### Authors: 1
+
+- Alexander Salmin ([@sasha-tlt](https://github.com/sasha-tlt))
+
+---
+
 # v1.0.20 (Tue Jun 13 2023)
 
 #### 🐛 Bug Fix
