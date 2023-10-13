@@ -1,3 +1,15 @@
+# v1.0.22 (Fri Oct 13 2023)
+
+#### 🐛 Bug Fix
+
+- Create semgrep.yml [#44](https://github.com/salute-developers/canvas-example/pull/44) ([@arsenykruglikov](https://github.com/arsenykruglikov))
+
+#### Authors: 1
+
+- Arseny Kruglikov ([@arsenykruglikov](https://github.com/arsenykruglikov))
+
+---
+
 # v1.0.21 (Thu Sep 21 2023)
 
 #### 🐛 Bug Fix
