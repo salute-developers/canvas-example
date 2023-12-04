@@ -20,7 +20,7 @@ export const ProjectGlobalStyle = createGlobalStyle`
         font-family: 'SB Sans Text', sans-serif;
         height: auto;
         min-height: 100%;
-        padding-top: var(--top-inset) var(--right-inset) var(--bottom-inset) var(--left-inset);
+        padding: var(--top-inset) var(--right-inset) var(--bottom-inset) var(--left-inset);
     }
 
     body::before {
