@@ -1,3 +1,23 @@
+# v1.0.23 (Tue Dec 05 2023)
+
+#### 🐛 Bug Fix
+
+- fix: padding-top => padding [#53](https://github.com/salute-developers/canvas-example/pull/53) ([@KateKate](https://github.com/KateKate))
+
+#### 🔩 Dependency Updates
+
+- Bump node-fetch, @salutejs/scenario and @salutejs/storage-adapter-memory [#49](https://github.com/salute-developers/canvas-example/pull/49) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump tough-cookie and @cypress/request [#47](https://github.com/salute-developers/canvas-example/pull/47) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump @babel/traverse from 7.20.12 to 7.23.2 [#46](https://github.com/salute-developers/canvas-example/pull/46) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump decode-uri-component from 0.2.0 to 0.2.2 [#45](https://github.com/salute-developers/canvas-example/pull/45) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Ekaterina Anishkina ([@KateKate](https://github.com/KateKate))
+
+---
+
 # v1.0.22 (Fri Oct 13 2023)
 
 #### 🐛 Bug Fix
