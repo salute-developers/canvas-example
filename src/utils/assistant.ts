@@ -98,7 +98,7 @@ export const initAssistant = () => {
 
     assistant.sendActionPromisified = (actionToSend: OutputActionType) => {
         return new Promise<InputActionType['payload']>((resolve, reject) => {
-            const unsubscribe = assistant!.sendAction<InputActionType>(
+            const unsubscribe = assistant!.sendAction<InputActionType, any>(
                 actionToSend,
                 (action) => {
                     resolve(action.payload);

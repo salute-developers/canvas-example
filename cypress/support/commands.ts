@@ -17,3 +17,5 @@ Cypress.Commands.add('start', () => {
 
     cy.visit('/').window().its('AssistantClient');
 });
+
+export {};

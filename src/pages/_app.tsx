@@ -2,7 +2,7 @@ import type { AppProps } from 'next/app';
 import { StyleSheetManager } from 'styled-components';
 import Head from 'next/head';
 import { Container, DeviceThemeProvider } from '@salutejs/plasma-ui';
-import { QueryClientProvider } from 'react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { spatnavInstance } from '@salutejs/spatial';
 import { useEffect } from 'react';
 
