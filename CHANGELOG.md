@@ -1,3 +1,15 @@
+# v1.0.24 (Wed Apr 17 2024)
+
+#### 🐛 Bug Fix
+
+- (SPEED-1427): обновляет react-query [#56](https://github.com/salute-developers/canvas-example/pull/56) ([@arsenykruglikov](https://github.com/arsenykruglikov))
+
+#### Authors: 1
+
+- Arseny Kruglikov ([@arsenykruglikov](https://github.com/arsenykruglikov))
+
+---
+
 # v1.0.23 (Tue Dec 05 2023)
 
 #### 🐛 Bug Fix
