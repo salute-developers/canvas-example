@@ -1,5 +1,5 @@
 import Router from 'next/router';
-import { QueryClient } from 'react-query';
+import { QueryClient } from '@tanstack/react-query';
 
 import { InputActionType, SetInitialNotesCommand } from '../scenario/types';
 import { GetInitialNotesCommand, Note } from '../types/todo';
@@ -10,7 +10,7 @@ import { useAssistantQuery } from './assistantReactQuery';
 export const queryClient = new QueryClient();
 
 export function addNote(note: string) {
-    queryClient.setQueryData<Note[]>('notes', (oldNotes = []) => [
+    queryClient.setQueryData<Note[]>(['notes'], (oldNotes = []) => [
         ...oldNotes,
         {
             id: Math.random().toString(36).substring(7),
@@ -21,17 +21,17 @@ export function addNote(note: string) {
 }
 
 export function markNoteDone(noteId: string) {
-    queryClient.setQueryData<Note[]>('notes', (oldNotes = []) => {
+    queryClient.setQueryData<Note[]>(['notes'], (oldNotes = []) => {
         return oldNotes.map((todo) => (todo.id === noteId ? { ...todo, completed: true } : todo));
     });
 }
 
 function deleteNote(noteId: string) {
-    queryClient.setQueryData<Note[]>('notes', (oldNotes = []) => oldNotes.filter(({ id }) => id !== noteId));
+    queryClient.setQueryData<Note[]>(['notes'], (oldNotes = []) => oldNotes.filter(({ id }) => id !== noteId));
 }
 
 function setNotes(notes: Note[]) {
-    queryClient.setQueryData<Note[]>('notes', () => notes, { updatedAt: Date.now() + 2000 });
+    queryClient.setQueryData<Note[]>(['notes'], () => notes, { updatedAt: Date.now() + 2000 });
 }
 
 function setInitialNotes(notes: Note[]) {

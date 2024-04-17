@@ -1,4 +1,4 @@
-import { useMutation, UseMutationOptions, useQuery, UseQueryOptions } from 'react-query';
+import { useMutation, UseMutationOptions, useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 import { InputActionType } from '../scenario/types';
 import { OutputActionType } from '../types/todo';
@@ -22,15 +22,19 @@ export function useAssistantMutation<
         return assistantInstance.sendActionPromisified!(action);
     }
 
-    return useMutation(mutationHandler, options);
+    return useMutation({ mutationFn: mutationHandler, ...options });
 }
 
 export function useAssistantQuery<OutputAction extends OutputActionType, InputAction extends InputActionType>(
     action: OutputAction,
     options: Omit<
-        UseQueryOptions<InputAction['payload'], unknown, InputAction['payload'], OutputAction['type']>,
+        UseQueryOptions<InputAction['payload'], unknown, InputAction['payload'], [OutputAction['type']]>,
         'queryKey' | 'queryFn'
-    > = {},
+    >,
 ) {
-    return useQuery(action.type, () => assistantInstance!.sendActionPromisified!(action), options);
+    return useQuery({
+        queryKey: [action.type],
+        queryFn: () => assistantInstance!.sendActionPromisified!(action) ?? null,
+        ...options,
+    });
 }
